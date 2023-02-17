@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { providers, utils } from "near-api-js";
+import { providers } from "near-api-js";
 import type { AccountView } from "near-api-js/lib/providers/provider";
 import type { Account } from "../interfaces";
 
@@ -60,8 +60,21 @@ const SignIn = () => {
 
   return (
     <div>
+      {loading && <div>Loading...</div>}
+      {account && (
+        <div>
+          <div>Account ID: {account.account_id}</div>
+          <div>Balance: {account.amount}</div>
+        </div>
+      )}
       <button className="mt-4 text-white" onClick={handleSignIn}>
         Connect Wallet
+      </button>
+      <button className="mt-4 text-white" onClick={handleSignOut}>
+        Sign Out
+      </button>
+      <button className="mt-4 text-white" onClick={handleSwitchWallet}>
+        Switch Wallet
       </button>
     </div>
   );

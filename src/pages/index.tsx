@@ -1,19 +1,11 @@
 import { type NextPage } from "next";
-import { useState } from "react";
 import Head from "next/head";
-import type { Account } from "../interfaces";
 
-import Link from "next/link";
-import {
-  WalletSelectorContextProvider,
-  useWalletSelector,
-} from "../contexts/WalletSelectorContext";
+import { WalletSelectorContextProvider } from "../contexts/WalletSelectorContext";
 
-import { api } from "../utils/api";
 import SignIn from "../components/SignIn";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
   // api.example.hello.useQuery({ text: "from tRPC" });
 
   return (
