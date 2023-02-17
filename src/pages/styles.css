@@ -1,0 +1,6 @@
+* {
+  box-sizing: border-box;
+}
+
+@import "../../../dist/packages/modal-ui/styles.css";
+/* @import "@near-wallet-selector/modal-ui/styles.css"; */
