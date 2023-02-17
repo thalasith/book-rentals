@@ -52,10 +52,12 @@ const SignIn = () => {
 
     setLoading(true);
 
-    getAccount().then((nextAccount) => {
+    const getAccountAsync = async () => {
+      const nextAccount = await getAccount();
       setAccount(nextAccount);
       setLoading(false);
-    });
+    };
+    getAccountAsync();
   }, [accountId, getAccount]);
 
   return (
