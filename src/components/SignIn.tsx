@@ -8,7 +8,7 @@ const SignIn = () => {
   const { selector, modal, accounts, accountId } = useWalletSelector();
   const [loading, setLoading] = useState(false);
   const [account, setAccount] = useState<Account | null>(null);
-
+  console.log("test");
   const getAccount = useCallback(async (): Promise<Account | null> => {
     if (!accountId) {
       return null;

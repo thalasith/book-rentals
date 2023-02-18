@@ -10,6 +10,8 @@
     "start": "next start"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.11",
+    "@heroicons/react": "^2.0.16",
     "@near-wallet-selector/coin98-wallet": "^7.8.0",
     "@near-wallet-selector/core": "^7.8.0",
     "@near-wallet-selector/default-wallets": "^7.8.0",
@@ -39,6 +41,7 @@
     "next": "13.1.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
     "superjson": "1.9.1",
     "zod": "^3.20.2"
   },
