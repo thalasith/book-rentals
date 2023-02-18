@@ -8,6 +8,7 @@ const SignIn = () => {
   const { selector, modal, accounts, accountId } = useWalletSelector();
   const [loading, setLoading] = useState(false);
   const [account, setAccount] = useState<Account | null>(null);
+
   const getAccount = useCallback(async (): Promise<Account | null> => {
     if (!accountId) {
       return null;
@@ -52,6 +53,7 @@ const SignIn = () => {
 
     setLoading(true);
 
+    // return void in this promise to avoid React warning
     getAccount()
       .then((nextAccount) => {
         setAccount(nextAccount);
@@ -73,13 +75,28 @@ const SignIn = () => {
           <div>Balance: {account.amount}</div>
         </div>
       )}
-      <button className="mt-4 text-white" onClick={handleSignIn}>
+      <button
+        className="mt-4 text-white"
+        onClick={() => {
+          void handleSignIn();
+        }}
+      >
         Connect Wallet
       </button>
-      <button className="mt-4 text-white" onClick={handleSignOut}>
+      <button
+        className="mt-4 text-white"
+        onClick={() => {
+          void handleSignOut();
+        }}
+      >
         Sign Out
       </button>
-      <button className="mt-4 text-white" onClick={handleSwitchWallet}>
+      <button
+        className="mt-4 text-white"
+        onClick={() => {
+          void handleSwitchWallet();
+        }}
+      >
         Switch Wallet
       </button>
     </div>
