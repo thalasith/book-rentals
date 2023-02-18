@@ -30,7 +30,7 @@ export const BooksList = () => {
         args_base64: base64,
         finality: "optimistic",
       })
-      .then((res) => JSON.parse(Buffer.from(res.result).toString()));
+      .then((res) => JSON.parse(Buffer.from(res.result).toString()) as Book[]);
   }, [selector]);
 
   useEffect(() => {
@@ -38,7 +38,6 @@ export const BooksList = () => {
       setBooks(res);
     });
   }, []);
-  console.log(books);
 
   return (
     <div>

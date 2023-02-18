@@ -5,7 +5,6 @@ import { useWalletSelector } from "../contexts/WalletSelectorContext";
 import type { Account } from "../interfaces";
 import { Popover, Transition, Menu } from "@headlessui/react";
 import Link from "next/link";
-import PrimaryButton from "./PrimaryButton";
 import {
   Bars3Icon,
   XMarkIcon,
@@ -138,7 +137,9 @@ export default function Header() {
                                 ? "bg-orange-500 text-white"
                                 : "text-gray-900"
                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                            onClick={handleSwitchWallet}
+                            onClick={() => {
+                              void handleSwitchWallet();
+                            }}
                           >
                             {active ? (
                               <HiOutlineSwitchHorizontal
@@ -163,7 +164,9 @@ export default function Header() {
                                 ? "bg-orange-500 text-white"
                                 : "text-gray-900"
                             } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
-                            onClick={handleSignOut}
+                            onClick={() => {
+                              void handleSignOut();
+                            }}
                           >
                             {active ? (
                               <GoSignOut
@@ -185,7 +188,12 @@ export default function Header() {
                 </Transition>
               </Menu>
             ) : (
-              <button className="flex" onClick={handleSignIn}>
+              <button
+                className="flex"
+                onClick={() => {
+                  void handleSignIn();
+                }}
+              >
                 {" "}
                 <GoSignIn className="mr-2 h-5 w-5" aria-hidden="true" /> Connect
                 Wallet{" "}
@@ -257,7 +265,9 @@ export default function Header() {
                   </span>
                 </p>
                 <button
-                  onClick={handleSwitchWallet}
+                  onClick={() => {
+                    void handleSwitchWallet();
+                  }}
                   className="mx-1 my-2 inline-flex w-4/5 items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-orange-600 py-1 text-base font-medium text-white shadow-sm hover:bg-orange-400"
                 >
                   <HiOutlineSwitchHorizontal
@@ -267,7 +277,9 @@ export default function Header() {
                   Switch Wallets
                 </button>
                 <button
-                  onClick={handleSignOut}
+                  onClick={() => {
+                    void handleSignOut();
+                  }}
                   className="mx-1 my-2 inline-flex w-4/5 items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-orange-600 py-1 text-base font-medium text-white shadow-sm hover:bg-orange-400"
                 >
                   <GoSignOut className="mr-2 h-5 w-5" aria-hidden="true" />{" "}
@@ -277,7 +289,9 @@ export default function Header() {
             ) : (
               <div className="flex flex-col items-center">
                 <button
-                  onClick={handleSignIn}
+                  onClick={() => {
+                    void handleSignIn();
+                  }}
                   className="mx-1 my-2 inline-flex w-4/5 items-center justify-center whitespace-nowrap rounded-md border border-transparent bg-orange-600 py-1 text-base font-medium text-white shadow-sm hover:bg-orange-400"
                 >
                   <GoSignIn className="mr-2 h-5 w-5" aria-hidden="true" />{" "}
