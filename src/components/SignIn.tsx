@@ -52,12 +52,16 @@ const SignIn = () => {
 
     setLoading(true);
 
-    const getAccountAsync = async () => {
-      const nextAccount = await getAccount();
-      setAccount(nextAccount);
-      setLoading(false);
-    };
-    getAccountAsync();
+    getAccount()
+      .then((nextAccount) => {
+        setAccount(nextAccount);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("Failed to get account");
+        console.error(err);
+        setLoading(false);
+      });
   }, [accountId, getAccount]);
 
   return (
