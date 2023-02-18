@@ -30,7 +30,12 @@ export const BooksList = () => {
         args_base64: base64,
         finality: "optimistic",
       })
-      .then((res) => JSON.parse(Buffer.from(res.result).toString()) as Book[]);
+      .then((res) => JSON.parse(Buffer.from(res.result).toString()) as Book[])
+      .catch((err) => {
+        console.log("Failed to get books");
+        console.error(err);
+        return [];
+      });
   }, [selector]);
 
   useEffect(() => {
