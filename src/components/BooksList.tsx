@@ -39,9 +39,14 @@ export const BooksList = () => {
   }, [selector]);
 
   useEffect(() => {
-    getBooks().then((res) => {
-      setBooks(res);
-    });
+    getBooks()
+      .then((res) => {
+        setBooks(res);
+      })
+      .catch((err) => {
+        console.log("Failed to get books");
+        console.error(err);
+      });
   }, []);
 
   return (
