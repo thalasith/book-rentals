@@ -50,19 +50,26 @@ export const BooksList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>Books List</h1>
+    <div className="w-full">
+      <h1 className="pb-2 text-xl font-bold">List of Available Book to Rent</h1>
       {/* Make sure books are empty */}
       {books.length === 0 && <p>No books found</p>}
-      {books.length !== 0 &&
-        books.map((book: Book) => {
-          return (
-            <div key={book.id}>
-              <h2>{book.book_name}</h2>
-              <p>{book.author_name}</p>
-            </div>
-          );
-        })}
+      <div className="flex w-full flex-col pt-2">
+        {books.length !== 0 &&
+          books.map((book: Book) => {
+            return (
+              <div key={book.id} className="flex w-full py-2">
+                <p className="mr-2 w-1/2 ">
+                  <span className="font-bold">{book.book_name}</span> by{" "}
+                  {book.author_name}
+                </p>
+                <button className="rounded bg-green-500 px-2">
+                  Available for Rent
+                </button>
+              </div>
+            );
+          })}
+      </div>
     </div>
   );
 };
