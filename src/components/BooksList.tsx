@@ -1,12 +1,18 @@
 import { useCallback, useState, useEffect } from "react";
 import { useWalletSelector } from "../contexts/WalletSelectorContext";
-import { providers, utils } from "near-api-js";
+import { providers } from "near-api-js";
 import type { CodeResult } from "near-api-js/lib/providers/provider";
 import { CONTRACT_ID } from "../constants";
 
+interface Book {
+  id: number;
+  book_name: string;
+  author_name: string;
+}
+
 export const BooksList = () => {
   const { selector, accountId } = useWalletSelector();
-  const [books, setBooks] = useState<any>([]);
+  const [books, setBooks] = useState<Book[]>([]);
   const getBooks = useCallback(() => {
     const { network } = selector.options;
 
