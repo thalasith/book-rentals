@@ -46,7 +46,7 @@ export const BooksList = () => {
       {/* Make sure books are empty */}
       {books.length === 0 && <p>No books found</p>}
       {books.length !== 0 &&
-        books.map((book: any) => {
+        books.map((book: Book) => {
           return (
             <div key={book.id}>
               <h2>{book.book_name}</h2>

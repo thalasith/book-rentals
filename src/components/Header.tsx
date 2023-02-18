@@ -63,10 +63,17 @@ export default function Header() {
 
     setLoading(true);
 
-    getAccount().then((nextAccount) => {
-      setAccount(nextAccount);
-      setLoading(false);
-    });
+    // return void in this promise to avoid React warning
+    getAccount()
+      .then((nextAccount) => {
+        setAccount(nextAccount);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.log("Failed to get account");
+        console.error(err);
+        setLoading(false);
+      });
   }, [accountId, getAccount]);
 
   return (
