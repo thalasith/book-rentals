@@ -1,38 +1,41 @@
 use near_sdk::borsh::{self, BorshDeserialize, BorshSerialize};
 use near_sdk::collections::Vector;
+use near_sdk::serde::{Deserialize, Serialize};
 use near_sdk::{env, near_bindgen};
 
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Debug, serde::Serialize, serde::Deserialize, Clone)]
+#[derive(BorshDeserialize, BorshSerialize, Debug, Serialize, Deserialize, Clone)]
 pub struct Book {
     pub id: i64,
     pub author_name: String,
     pub book_name: String,
 }
 
-#[near_bindgen]
-#[derive(BorshDeserialize, BorshSerialize, Debug)]
-pub struct BookDetails {
-    books: Vector<Book>,
+#[derive(BorshDeserialize, BorshSerialize, Debug, Serialize, Deserialize, Clone)]
+pub struct User {
+    pub id: i64,
+    pub user: String,
+    pub rental_status: String,
 }
 
-impl Default for BookDetails {
+#[near_bindgen]
+#[derive(BorshDeserialize, BorshSerialize, Debug)]
+pub struct Contract {
+    books: Vector<Book>,
+    users: Vector<User>,
+}
+
+impl Default for Contract {
     fn default() -> Self {
         Self {
-            books: Vector::new(b"b".to_vec()),
+            books: Vector::new(b"m"),
+            users: Vector::new(b"m"),
         }
     }
 }
 
 #[near_bindgen]
-impl BookDetails {
-    #[init]
-    pub fn new() -> Self {
-        assert!(!env::state_exists(), "Already initialized");
-        Self::default()
-    }
-
-    pub fn add_book(&mut self, author_name: String, book_name: String) {
+impl Contract {
+    pub fn new_book(&mut self, author_name: String, book_name: String) {
         let book = Book {
             id: self.books.len() as i64,
             author_name,
@@ -41,15 +44,28 @@ impl BookDetails {
         self.books.push(&book);
     }
 
-    pub fn get_book_details(&self, id: i64) -> Option<Book> {
-        self.books.get(id as u64)
-    }
-
-    pub fn get_all_books_details(&self) -> Vec<Book> {
-        let mut books: Vec<Book> = Vec::new();
+    pub fn get_books(&self) -> Vec<Book> {
+        let mut books = Vec::new();
         for i in 0..self.books.len() {
             books.push(self.books.get(i).unwrap());
         }
         books
+    }
+
+    pub fn new_user(&mut self, user: String, rental_status: String) {
+        let user = User {
+            id: self.users.len() as i64,
+            user,
+            rental_status,
+        };
+        self.users.push(&user);
+    }
+
+    pub fn get_users(&self) -> Vec<User> {
+        let mut users = Vec::new();
+        for i in 0..self.users.len() {
+            users.push(self.users.get(i).unwrap());
+        }
+        users
     }
 }
