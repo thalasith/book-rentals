@@ -3,9 +3,8 @@ import Head from "next/head";
 
 import { WalletSelectorContextProvider } from "../contexts/WalletSelectorContext";
 
-import SignIn from "../components/SignIn";
 import Header from "../components/Header";
-import { BooksList } from "../components/BooksList";
+import { RentedBooks } from "../components/RentedBooks";
 
 const Home: NextPage = () => {
   // api.example.hello.useQuery({ text: "from tRPC" });
@@ -21,7 +20,7 @@ const Home: NextPage = () => {
         <WalletSelectorContextProvider>
           <Header />
           <div className="z-0 mx-2 flex min-h-screen w-10/12 flex-col px-2 pt-12 lg:mx-auto lg:flex-row lg:px-8">
-            <BooksList />
+            <RentedBooks />
           </div>
         </WalletSelectorContextProvider>
       </main>

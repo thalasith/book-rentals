@@ -1,6 +1,6 @@
 import { useCallback, useState, useEffect } from "react";
 import { useWalletSelector } from "../contexts/WalletSelectorContext";
-import { providers } from "near-api-js";
+import { providers, keyStores, Near, WalletConnection } from "near-api-js";
 import type { CodeResult } from "near-api-js/lib/providers/provider";
 import { CONTRACT_ID } from "../constants";
 

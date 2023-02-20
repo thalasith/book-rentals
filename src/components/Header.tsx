@@ -1,5 +1,11 @@
 import { Fragment, useCallback, useEffect, useState } from "react";
-import { providers, utils } from "near-api-js";
+import {
+  providers,
+  utils,
+  keyStores,
+  Near,
+  WalletConnection,
+} from "near-api-js";
 import type { AccountView } from "near-api-js/lib/providers/provider";
 import { useWalletSelector } from "../contexts/WalletSelectorContext";
 import type { Account } from "../interfaces";
@@ -18,6 +24,7 @@ export default function Header() {
   const { selector, modal, accounts, accountId } = useWalletSelector();
   const [account, setAccount] = useState<Account | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
+
   const getAccount = useCallback(async (): Promise<Account | null> => {
     if (!accountId) {
       return null;
@@ -223,7 +230,7 @@ export default function Header() {
                   <Link href="/" className="flex flex-row">
                     <GiBasketballBall className="h-8 w-auto text-orange-600 sm:h-10" />
                     <div className="ml-3 text-2xl font-bold text-slate-800">
-                      Decentrahoops
+                      Library
                     </div>
                   </Link>
                 </div>
