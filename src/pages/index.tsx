@@ -3,7 +3,6 @@ import Head from "next/head";
 
 import { WalletSelectorContextProvider } from "../contexts/WalletSelectorContext";
 
-import SignIn from "../components/SignIn";
 import Header from "../components/Header";
 import { BooksList } from "../components/BooksList";
 
