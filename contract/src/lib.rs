@@ -16,7 +16,6 @@ pub struct User {
     pub user: String,
     pub dob: i64,
 }
-
 #[near_bindgen]
 #[derive(BorshDeserialize, BorshSerialize, Debug)]
 pub struct Contract {
