@@ -8,8 +8,6 @@ import Header from "../components/Header";
 import { BooksList } from "../components/BooksList";
 
 const Home: NextPage = () => {
-  // api.example.hello.useQuery({ text: "from tRPC" });
-
   return (
     <>
       <Head>
